@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PresentaBlockVegalite</title>
+    <script src="../dist/presenta-block-vegalite.min.js"></script>
+
+    <style>
+        #wrapper{
+            width:100%;
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="wrapper"></div>
+
+    <script>
+
+
+        var block = {
+            type: 'vegalite',
+            url: 'https://raw.githubusercontent.com/abusedmedia/test/main/testvega2.json'
+            // vega: {
+            //     $schema: 'https://vega.github.io/schema/vega-lite/v4.json',
+            //     width: 300,
+            //     height: 200,
+            //     data: { url: 'https://vega.github.io/vega-lite/data/unemployment-across-industries.json' },
+            //     mark: 'area',
+            //     encoding: {
+            //         x: {
+            //         timeUnit: 'yearmonth',
+            //     field: 'date',
+            //         axis: { domain: false, format: '%Y', tickSize: 0 }
+            //         },
+            //         y: {
+            //         aggregate: 'sum',
+            //     field: 'count',
+            //         axis: null,
+            //         stack: 'center'
+            //         },
+            //         color: { field: 'series', scale: { scheme: 'category20b' } }
+            //     }
+            // }
+        }
+        new PresentaBlockVegalite(document.querySelector('#wrapper'), block)
+    </script>
+</body>
+</html>
