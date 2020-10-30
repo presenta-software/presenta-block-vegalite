@@ -1,7 +1,7 @@
 import css from './style.css'
 import embed from 'vega-embed'
 
-const block = function (el, config, rootElement, projectConfig) {
+const block = function (el, config) {
   const child = document.createElement('div')
   child.classList.add(css.vegalite)
 

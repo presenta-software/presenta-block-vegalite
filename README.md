@@ -27,3 +27,15 @@ To configure this block use this setting:
 |           |                                                      |               |                 |
 
 Note that `vega` and `url` are alternatives, one of them needs to be set and valid.
+
+
+
+## Development
+
+Run the watcher:
+
+    npm start
+
+and the local webserver
+
+    npm run test
