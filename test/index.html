@@ -22,7 +22,7 @@
 
         var block = {
             type: 'vegalite',
-            url: 'https://raw.githubusercontent.com/abusedmedia/test/main/testvega2.json'
+            url: 'https://raw.githubusercontent.com/abusedmedia/test/main/testvega2.json',
             // config: {
             //     $schema: 'https://vega.github.io/schema/vega-lite/v4.json',
             //     width: 300,
@@ -45,7 +45,18 @@
             //     }
             // }
         }
-        new PresentaBlockVegalite(document.querySelector('#wrapper'), block)
+
+        if(block.config){
+            new PresentaBlockVegalite(document.querySelector('#wrapper'), block)
+        }else{
+        fetch(block.url)
+            .then(resp => resp.text())
+            .then(data => {
+                block._cache = data
+                new PresentaBlockVegalite(document.querySelector('#wrapper'), block)
+            })
+        }
+
     </script>
 </body>
 </html>

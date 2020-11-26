@@ -9,15 +9,6 @@ const block = function (el, config) {
 
   var def = config.config
 
-  if (!def && config.url) {
-    fetch(config.url)
-      .then(resp => resp.json())
-      .then(data => {
-        def = data
-        createVega()
-      })
-  }
-
   const createVega = () => {
     def.width = 'container'
     def.height = 'container'
@@ -27,7 +18,16 @@ const block = function (el, config) {
     })
   }
 
-  if (def) createVega()
+  if (def) {
+    createVega()
+  } else {
+    if (config._cache) {
+      def = JSON.parse(config._cache)
+      createVega()
+    } else {
+      console.log('[block vegalite]', 'vegalite source missing')
+    }
+  }
 
   this.beforeDestroy = () => {
   }
@@ -40,6 +40,7 @@ export default block
 
 block.install = Presenta => {
   Presenta.addBlock('vegalite', block)
+  if (Presenta.io.addCache) Presenta.io.addCache({ type: 'vegalite', field: 'url' })
 }
 
 if (typeof window !== 'undefined' && window.Presenta) {
