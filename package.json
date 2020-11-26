@@ -1,6 +1,6 @@
 {
   "name": "@presenta/block-vegalite",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A Presenta Block to render a Vega-Lite chart",
   "main": "src/index.js",
   "unpkg": "dist/presenta-block-vegalite.min.js",
