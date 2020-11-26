@@ -11,6 +11,7 @@ const terser = require('rollup-plugin-terser').terser
 
 export default {
   input: 'src/index.js',
+  context: 'window',
   output: {
     file: 'dist/presenta-block-vegalite.min.js',
     format: 'umd',
@@ -24,10 +25,11 @@ export default {
   plugins: [
     resolve(),
     babel({
+      babelHelpers: 'bundled',
       exclude: 'node_modules/**'
     }),
     json(),
-    terser(),
+    // terser(),
     commonjs(),
     postcss({
       modules: {

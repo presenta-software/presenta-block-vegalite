@@ -7,7 +7,7 @@ const block = function (el, config) {
 
   el.appendChild(child)
 
-  var def = config.vega
+  var def = config.config
 
   if (!def && config.url) {
     fetch(config.url)
