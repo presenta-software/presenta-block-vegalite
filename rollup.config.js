@@ -29,7 +29,7 @@ export default {
       exclude: 'node_modules/**'
     }),
     json(),
-    // terser(),
+    terser(),
     commonjs(),
     postcss({
       modules: {

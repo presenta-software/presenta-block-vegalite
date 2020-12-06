@@ -49,12 +49,16 @@
         if(block.config){
             new PresentaBlockVegalite(document.querySelector('#wrapper'), block)
         }else{
-        fetch(block.url)
-            .then(resp => resp.text())
-            .then(data => {
-                block._cache = data
-                new PresentaBlockVegalite(document.querySelector('#wrapper'), block)
-            })
+            // this emulate the cache controller of Presenta Lib
+            fetch(block.url)
+                .then(resp => resp.text())
+                .then(data => {
+                    block._cache = data
+                    new PresentaBlockVegalite(document.querySelector('#wrapper'), block)
+                })
+
+            // use this instead to disable that emulation 
+            //new PresentaBlockVegalite(document.querySelector('#wrapper'), block)
         }
 
     </script>

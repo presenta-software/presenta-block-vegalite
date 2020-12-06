@@ -25,7 +25,14 @@ const block = function (el, config) {
       def = JSON.parse(config._cache)
       createVega()
     } else {
-      console.log('[block vegalite]', 'vegalite source missing')
+      // fallback to direct loading
+      fetch(config.url)
+        .then(resp => resp.text())
+        .then(data => {
+          config._cache = data
+          def = JSON.parse(config._cache)
+          createVega()
+        })
     }
   }
 
